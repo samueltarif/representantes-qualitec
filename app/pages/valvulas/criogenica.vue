@@ -7,7 +7,7 @@
       :links="headerLinks"
       :show-search="true"
       cta-text="Solicitar Cotação"
-      cta-to="#"
+      cta-to="https://wa.me/5511932974403?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20cota%C3%A7%C3%A3o%20para%20as%20V%C3%A1lvulas%20Globo%20Criog%C3%AAnicas%20(S%C3%A9rie%20V-CRIO)."
       @search="onSearch"
     />
 

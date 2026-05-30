@@ -5,67 +5,87 @@
       brand="Industrial Representative"
       :links="headerLinks"
       cta-text="Solicitar atendimento"
-      cta-to="#footer"
+      cta-to="https://wa.me/5511932974403?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20atendimento%20sobre%20as%20solu%C3%A7%C3%B5es%20representadas."
     />
 
     <main class="flex-grow">
       <!-- Hero Section Wrapper with Scroll Height -->
       <section ref="scrollContainer" class="relative w-full h-[250vh]">
-        <!-- Sticky viewport container: Pins content while user scrolls (Shifted down by pt-[100px] for breathing room) -->
-        <div class="sticky top-0 h-screen w-full flex flex-col justify-center items-center pt-[100px] pb-12 px-gutter text-center overflow-hidden">
-          <!-- Auto-scaling videos gallery: now at the top -->
-          <div class="w-full max-w-[1400px] mb-12 px-gutter mx-auto flex justify-center">
-            <div class="flex flex-row justify-center items-center gap-6 max-w-full h-[20vh] md:h-[45vh]">
-              <!-- Video 1: Conexão -->
-              <div class="h-full aspect-[1080/1934] transition-all hover:scale-[1.02] duration-300">
-                <video
-                  ref="videoConexao"
-                  src="/video/anima%C3%A7%C3%A3o_conex%C3%A3o.mp4"
-                  muted
-                  playsinline
-                  class="w-full h-full object-contain mix-blend-multiply"
-                ></video>
-              </div>
-              <!-- Video 2: Válvula Globo -->
-              <div class="h-full aspect-[1080/1918] transition-all hover:scale-[1.02] duration-300">
-                <video
-                  ref="videoValvGlobo"
-                  src="/video/anima%C3%A7%C3%A3o_valv_globo.mp4"
-                  muted
-                  playsinline
-                  class="w-full h-full object-contain mix-blend-multiply"
-                ></video>
-              </div>
-              <!-- Video 3: Válvula de Segurança -->
-              <div class="h-full aspect-[1080/1934] transition-all hover:scale-[1.02] duration-300">
-                <video
-                  ref="videoValvSeguranca"
-                  src="/video/anima%C3%A7%C3%A3o_valvula_seguranca.mp4"
-                  muted
-                  playsinline
-                  class="w-full h-full object-contain mix-blend-multiply"
-                ></video>
+        <!-- Sticky viewport container: Pins content while user scrolls -->
+        <div class="sticky top-0 h-screen w-full flex items-center justify-center pt-20 pb-12 px-gutter overflow-hidden">
+          
+          <!-- Inner Content Grid: 3 Columns on Desktop, Stacked on Tablet/Mobile -->
+          <div class="w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1.6fr_1.2fr] gap-8 xl:gap-16 items-center">
+            
+            <!-- Left Column: Headline (Above products on mobile/tablet, left on desktop) -->
+            <div 
+              class="w-full text-center lg:text-left transition-all duration-1000 ease-out delay-200"
+              :class="isLoaded ? 'opacity-100 translate-x-0 translate-y-0' : 'opacity-0 translate-y-4 lg:translate-y-0 lg:-translate-x-8'"
+            >
+              <h1 class="font-display-lg text-display-lg-mobile lg:text-[44px] xl:text-[52px] text-text-primary leading-[1.1] tracking-tight font-bold">
+                Soluções industriais com representação técnica de confiança.
+              </h1>
+            </div>
+
+            <!-- Center Column: Auto-scaling videos gallery (Centered on all viewports) -->
+            <div 
+              class="w-full flex justify-center transition-all duration-1000 ease-out"
+              :class="isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'"
+            >
+              <div class="flex flex-row justify-center items-center gap-4 xl:gap-6 max-w-full h-[25vh] md:h-[38vh] lg:h-[55vh]">
+                <!-- Video 1: Conexão -->
+                <div class="h-full aspect-[1080/1934] transition-all hover:scale-[1.05] duration-300">
+                  <video
+                    ref="videoConexao"
+                    src="/video/anima%C3%A7%C3%A3o_conex%C3%A3o.mp4"
+                    muted
+                    playsinline
+                    class="w-full h-full object-contain mix-blend-multiply"
+                  ></video>
+                </div>
+                <!-- Video 2: Válvula Globo -->
+                <div class="h-full aspect-[1080/1918] transition-all hover:scale-[1.05] duration-300">
+                  <video
+                    ref="videoValvGlobo"
+                    src="/video/anima%C3%A7%C3%A3o_valv_globo.mp4"
+                    muted
+                    playsinline
+                    class="w-full h-full object-contain mix-blend-multiply"
+                  ></video>
+                </div>
+                <!-- Video 3: Válvula de Segurança -->
+                <div class="h-full aspect-[1080/1934] transition-all hover:scale-[1.05] duration-300">
+                  <video
+                    ref="videoValvSeguranca"
+                    src="/video/anima%C3%A7%C3%A3o_valvula_seguranca.mp4"
+                    muted
+                    playsinline
+                    class="w-full h-full object-contain mix-blend-multiply"
+                  ></video>
+                </div>
               </div>
             </div>
+
+            <!-- Right Column: Subtitle / Description & CTAs (Below products on mobile/tablet, right on desktop) -->
+            <div 
+              class="w-full flex flex-col gap-6 items-center lg:items-start text-center lg:text-left transition-all duration-1000 ease-out delay-400"
+              :class="isLoaded ? 'opacity-100 translate-x-0 translate-y-0' : 'opacity-0 translate-y-4 lg:translate-y-0 lg:translate-x-8'"
+            >
+              <p class="font-body-lg text-body-lg text-text-secondary leading-relaxed">
+                Conectando indústrias às melhores soluções em fornecimento industrial com atendimento consultivo, agilidade e negociação estratégica.
+              </p>
+              <div class="flex flex-row flex-wrap gap-4 mt-2 justify-center lg:justify-start">
+                <BaseButton variant="primary" to="https://wa.me/5511932974403?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20atendimento%20sobre%20as%20solu%C3%A7%C3%B5es%20representadas." class="!px-6">
+                  Solicitar atendimento
+                </BaseButton>
+                <BaseButton variant="secondary" to="#solutions" class="!px-6">
+                  Conhecer soluções
+                </BaseButton>
+              </div>
+            </div>
+
           </div>
 
-          <!-- Hero text, paragraph, and buttons: now at the bottom -->
-          <div class="max-w-4xl mx-auto flex flex-col gap-6 items-center">
-            <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-text-primary max-w-3xl">
-              Soluções industriais com representação técnica de confiança.
-            </h1>
-            <p class="font-body-lg text-body-lg text-text-secondary max-w-2xl">
-              Conectando indústrias às melhores soluções em fornecimento industrial com atendimento consultivo, agilidade e negociação estratégica.
-            </p>
-            <div class="flex gap-4 mt-4">
-              <BaseButton variant="primary" to="#footer">
-                Solicitar atendimento
-              </BaseButton>
-              <BaseButton variant="secondary" to="#solutions">
-                Conhecer soluções
-              </BaseButton>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -166,6 +186,8 @@ const videoValvSeguranca = ref(null)
 
 let videos = []
 let ticking = false
+const scrollFraction = ref(0)
+const isLoaded = ref(false)
 
 const getDuration = (video) => {
   if (video && video.duration && !isNaN(video.duration) && video.duration > 0) {
@@ -188,6 +210,7 @@ const updateVideoProgress = () => {
   // fraction is 1 when the bottom of scrollContainer is at the bottom of viewport
   let fraction = -rect.top / scrollRange
   fraction = Math.max(0, Math.min(1, fraction))
+  scrollFraction.value = fraction
 
   videos.forEach(video => {
     if (video) {
@@ -235,6 +258,11 @@ onMounted(() => {
 
   // Set initial seek
   updateVideoProgress()
+
+  // Set entrance animation state
+  setTimeout(() => {
+    isLoaded.value = true
+  }, 150)
 
   window.addEventListener('scroll', handleScroll, { passive: true })
   window.addEventListener('resize', handleScroll, { passive: true })

@@ -7,7 +7,7 @@
       :links="headerLinks"
       :show-search="true"
       cta-text="Inquiry"
-      cta-to="#"
+      cta-to="https://wa.me/5511932974403?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20cota%C3%A7%C3%A3o%20de%20v%C3%A1lvulas%20industriais."
       class="!fixed w-full top-0 z-50 shadow-sm"
       @search="onSearch"
     />
@@ -25,7 +25,7 @@
           A solução definitiva em controle de fluidos.
         </p>
         <div class="flex gap-4">
-          <BaseButton variant="primary" size="lg" to="#">
+          <BaseButton variant="primary" size="lg" to="https://wa.me/5511932974403?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20cota%C3%A7%C3%A3o%20de%20v%C3%A1lvulas%20industriais.">
             Solicitar Cotação
           </BaseButton>
           <BaseButton variant="secondary" size="lg" to="#solutions" class="!flex items-center gap-2">
