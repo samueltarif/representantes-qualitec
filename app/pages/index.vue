@@ -10,29 +10,60 @@
 
     <main class="flex-grow">
       <!-- Hero Section Wrapper with Scroll Height -->
-      <section ref="scrollContainer" class="relative w-full h-[250vh]">
+      <section ref="scrollContainer" :class="isMobile ? 'relative w-full h-auto' : 'relative w-full h-[250vh]'">
         <!-- Sticky viewport container: Pins content while user scrolls -->
-        <div class="sticky top-0 h-screen w-full flex items-center justify-center pt-20 pb-12 px-gutter overflow-hidden">
+        <div :class="isMobile ? 'relative w-full flex flex-col pt-24 pb-12 px-margin-mobile gap-8' : 'sticky top-0 h-screen w-full flex flex-col justify-center items-center py-12 px-gutter overflow-hidden gap-8 max-w-[1400px] mx-auto'">
           
-          <!-- Inner Content Grid: 3 Columns on Desktop, Stacked on Tablet/Mobile -->
-          <div class="w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1.6fr_1.2fr] gap-8 xl:gap-16 items-center">
+          <!-- Inner Content Grid: 3 Columns -->
+          <div class="w-full grid grid-cols-1 md:grid-cols-[1.1fr_1.8fr_1.1fr] gap-8 xl:gap-12 items-center">
             
-            <!-- Left Column: Headline (Above products on mobile/tablet, left on desktop) -->
+            <!-- Left Column: Headline & Features (Above products on mobile) -->
             <div 
-              class="w-full text-center lg:text-left transition-all duration-1000 ease-out delay-200"
-              :class="isLoaded ? 'opacity-100 translate-x-0 translate-y-0' : 'opacity-0 translate-y-4 lg:translate-y-0 lg:-translate-x-8'"
+              class="w-full flex flex-col text-left transition-all duration-1000 ease-out delay-200"
+              :class="isLoaded ? 'opacity-100 translate-x-0 translate-y-0' : 'opacity-0 translate-y-4 md:translate-y-0 md:-translate-x-8'"
             >
-              <h1 class="font-display-lg text-display-lg-mobile lg:text-[44px] xl:text-[52px] text-text-primary leading-[1.1] tracking-tight font-bold">
-                Soluções industriais com representação técnica de confiança.
+              <span class="font-semibold text-[11px] md:text-[12px] text-link-blue uppercase tracking-widest mb-3 block">
+                Soluções Industriais
+              </span>
+              <h1 class="font-display-lg text-3xl md:text-[28px] lg:text-[34px] xl:text-[40px] text-text-primary leading-[1.15] tracking-tight font-bold mb-4">
+                Representação técnica com confiança.
               </h1>
+              <div class="w-12 h-1 bg-link-blue rounded mb-6"></div>
+              
+              <!-- Features List -->
+              <div class="flex flex-col gap-5">
+                <div class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-link-blue flex-shrink-0" style="font-size: 26px; font-variation-settings: 'FILL' 0;">gpp_good</span>
+                  <div>
+                    <h3 class="font-bold text-text-primary text-[15px] leading-tight">Confiabilidade</h3>
+                    <p class="text-text-secondary text-[13px] mt-1 leading-snug">Parcerias sólidas e produtos de alta qualidade para sua operação.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-link-blue flex-shrink-0" style="font-size: 26px; font-variation-settings: 'FILL' 0;">settings</span>
+                  <div>
+                    <h3 class="font-bold text-text-primary text-[15px] leading-tight">Soluções completas</h3>
+                    <p class="text-text-secondary text-[13px] mt-1 leading-snug">Componentes industriais para diversas aplicações.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-link-blue flex-shrink-0" style="font-size: 26px; font-variation-settings: 'FILL' 0;">person</span>
+                  <div>
+                    <h3 class="font-bold text-text-primary text-[15px] leading-tight">Atendimento consultivo</h3>
+                    <p class="text-text-secondary text-[13px] mt-1 leading-snug">Equipe técnica pronta para entender e atender sua demanda.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <!-- Center Column: Auto-scaling videos gallery (Centered on all viewports) -->
+            <!-- Center Column: Auto-scaling videos gallery -->
             <div 
               class="w-full flex justify-center transition-all duration-1000 ease-out"
               :class="isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'"
             >
-              <div class="flex flex-row justify-center items-center gap-4 xl:gap-6 max-w-full h-[25vh] md:h-[38vh] lg:h-[55vh]">
+              <div class="flex flex-row justify-center items-center gap-3 xl:gap-4 max-w-full h-[30vh] md:h-[45vh] lg:h-[58vh] xl:h-[62vh]">
                 <!-- Video 1: Conexão -->
                 <div class="h-full aspect-[1080/1934] transition-all hover:scale-[1.05] duration-300">
                   <video
@@ -66,24 +97,58 @@
               </div>
             </div>
 
-            <!-- Right Column: Subtitle / Description & CTAs (Below products on mobile/tablet, right on desktop) -->
+            <!-- Right Column: Subtitle / Description & CTA -->
             <div 
-              class="w-full flex flex-col gap-6 items-center lg:items-start text-center lg:text-left transition-all duration-1000 ease-out delay-400"
-              :class="isLoaded ? 'opacity-100 translate-x-0 translate-y-0' : 'opacity-0 translate-y-4 lg:translate-y-0 lg:translate-x-8'"
+              class="w-full flex flex-col text-left transition-all duration-1000 ease-out delay-400"
+              :class="isLoaded ? 'opacity-100 translate-x-0 translate-y-0' : 'opacity-0 translate-y-4 md:translate-y-0 md:translate-x-8'"
             >
-              <p class="font-body-lg text-body-lg text-text-secondary leading-relaxed">
-                Conectando indústrias às melhores soluções em fornecimento industrial com atendimento consultivo, agilidade e negociação estratégica.
-              </p>
-              <div class="flex flex-row flex-wrap gap-4 mt-2 justify-center lg:justify-start">
-                <BaseButton variant="primary" to="https://wa.me/5511932974403?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20atendimento%20sobre%20as%20solu%C3%A7%C3%B5es%20representadas." class="!px-6">
-                  Solicitar atendimento
-                </BaseButton>
-                <BaseButton variant="secondary" to="#solutions" class="!px-6">
-                  Conhecer soluções
-                </BaseButton>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="material-symbols-outlined text-link-blue" style="font-size: 28px; font-variation-settings: 'FILL' 0;">factory</span>
               </div>
+              <div class="w-full h-[1px] bg-outline-variant/60 mb-4"></div>
+              
+              <h2 class="font-bold text-text-primary text-[18px] md:text-[20px] lg:text-[22px] leading-snug mb-3">
+                Conectando indústrias às melhores soluções.
+              </h2>
+              <p class="text-text-secondary text-[13px] md:text-[14px] leading-relaxed mb-6">
+                Atuamos no fornecimento industrial com atendimento consultivo, agilidade e negociação estratégica para impulsionar resultados.
+              </p>
+              
+              <BaseButton variant="primary" to="https://wa.me/5511932974403?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20atendimento%20sobre%20as%20solu%C3%A7%C3%B5es%20representadas." class="w-full md:w-auto !px-6 py-2.5">
+                Solicitar atendimento
+              </BaseButton>
             </div>
 
+          </div>
+
+          <!-- Bottom Highlights Card -->
+          <div 
+            class="w-full bg-surface-off-white/80 border border-outline-variant/30 rounded-[20px] p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center transition-all duration-1000 ease-out delay-500"
+            :class="isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+          >
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-link-blue flex-shrink-0" style="font-size: 32px; font-variation-settings: 'FILL' 0;">track_changes</span>
+              <div>
+                <h4 class="font-bold text-text-primary text-[12px] tracking-wider uppercase mb-1">Foco no resultado</h4>
+                <p class="text-text-secondary text-[12px] leading-normal">Entregamos o que sua indústria precisa para manter a produção em movimento.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-link-blue flex-shrink-0" style="font-size: 32px; font-variation-settings: 'FILL' 0;">handshake</span>
+              <div>
+                <h4 class="font-bold text-text-primary text-[12px] tracking-wider uppercase mb-1">Parcerias estratégicas</h4>
+                <p class="text-text-secondary text-[12px] leading-normal">Trabalhamos com marcas reconhecidas e padrões de excelência.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-link-blue flex-shrink-0" style="font-size: 32px; font-variation-settings: 'FILL' 0;">trending_up</span>
+              <div>
+                <h4 class="font-bold text-text-primary text-[12px] tracking-wider uppercase mb-1">Desempenho que gera valor</h4>
+                <p class="text-text-secondary text-[12px] leading-normal">Soluções técnicas que aumentam a eficiência e reduzem custos operacionais.</p>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -185,9 +250,20 @@ const videoValvGlobo = ref(null)
 const videoValvSeguranca = ref(null)
 
 let videos = []
-let ticking = false
 const scrollFraction = ref(0)
 const isLoaded = ref(false)
+const isMobile = ref(false)
+
+// Smooth scroll variables
+let targetFraction = 0
+let currentFraction = 0
+let isLoopRunning = false
+
+const checkMobile = () => {
+  if (typeof window !== 'undefined') {
+    isMobile.value = window.innerWidth < 768
+  }
+}
 
 const getDuration = (video) => {
   if (video && video.duration && !isNaN(video.duration) && video.duration > 0) {
@@ -196,7 +272,7 @@ const getDuration = (video) => {
   return 5.92 // Exact fallback duration for all three keyframe videos
 }
 
-const updateVideoProgress = () => {
+const updateTargetFraction = () => {
   if (!scrollContainer.value) return
 
   const rect = scrollContainer.value.getBoundingClientRect()
@@ -206,31 +282,92 @@ const updateVideoProgress = () => {
 
   if (scrollRange <= 0) return
 
-  // fraction is 0 when the top of scrollContainer is at the top of viewport
-  // fraction is 1 when the bottom of scrollContainer is at the bottom of viewport
   let fraction = -rect.top / scrollRange
   fraction = Math.max(0, Math.min(1, fraction))
-  scrollFraction.value = fraction
+  targetFraction = fraction
+}
 
-  videos.forEach(video => {
-    if (video) {
-      const dur = getDuration(video)
-      const targetTime = dur * fraction
-      // Avoid redundant assignments to prevent seeking overhead
-      if (Math.abs(video.currentTime - targetTime) > 0.015) {
-        video.currentTime = targetTime
+const renderLoop = () => {
+  if (isMobile.value) {
+    isLoopRunning = false
+    return
+  }
+
+  const ease = 0.08 // Easing factor for buttery smooth progress (lower = smoother)
+  const diff = targetFraction - currentFraction
+
+  if (Math.abs(diff) > 0.0001) {
+    currentFraction += diff * ease
+    scrollFraction.value = currentFraction
+
+    videos.forEach(video => {
+      if (video) {
+        // Prevent seeking overload: only seek if the browser is not already busy seeking
+        if (!video.seeking) {
+          const dur = getDuration(video)
+          const targetTime = dur * currentFraction
+          if (Math.abs(video.currentTime - targetTime) > 0.01) {
+            video.currentTime = targetTime
+          }
+        }
       }
-    }
-  })
+    })
+
+    // Continue the smooth animation loop
+    requestAnimationFrame(renderLoop)
+  } else {
+    // Snap exactly to final target once close enough
+    currentFraction = targetFraction
+    scrollFraction.value = currentFraction
+
+    videos.forEach(video => {
+      if (video) {
+        const dur = getDuration(video)
+        video.currentTime = dur * currentFraction
+      }
+    })
+
+    // Halt the animation loop to conserve CPU resources
+    isLoopRunning = false
+  }
 }
 
 const handleScroll = () => {
-  if (!ticking) {
-    window.requestAnimationFrame(() => {
-      updateVideoProgress()
-      ticking = false
+  if (isMobile.value) return
+  updateTargetFraction()
+  if (!isLoopRunning) {
+    isLoopRunning = true
+    requestAnimationFrame(renderLoop)
+  }
+}
+
+const handleResize = () => {
+  const wasMobile = isMobile.value
+  checkMobile()
+
+  if (isMobile.value !== wasMobile) {
+    // Mobile state changed, toggling autoplay looping vs static seeks
+    videos.forEach(video => {
+      if (video) {
+        if (isMobile.value) {
+          video.loop = true
+          video.play().catch(err => console.log('Autoplay play failed:', err))
+        } else {
+          video.pause()
+          video.loop = false
+          const dur = getDuration(video)
+          video.currentTime = dur * currentFraction
+        }
+      }
     })
-    ticking = true
+  }
+
+  if (!isMobile.value) {
+    updateTargetFraction()
+    if (!isLoopRunning) {
+      isLoopRunning = true
+      requestAnimationFrame(renderLoop)
+    }
   }
 }
 
@@ -241,23 +378,36 @@ onMounted(() => {
     videoValvSeguranca.value
   ].filter(Boolean)
 
+  checkMobile()
+
   videos.forEach(video => {
     video.muted = true
     video.playsInline = true
     video.controls = false
     video.setAttribute('preload', 'auto')
     
-    // Wire up event listeners to make sure seeking starts as soon as data loads
-    video.addEventListener('loadedmetadata', updateVideoProgress)
-    video.addEventListener('loadeddata', updateVideoProgress)
-    video.addEventListener('canplay', updateVideoProgress)
-    
-    video.pause()
-    video.load()
+    if (isMobile.value) {
+      video.loop = true
+      video.play().catch(err => console.log('Autoplay play failed:', err))
+    } else {
+      video.pause()
+    }
   })
 
-  // Set initial seek
-  updateVideoProgress()
+  // Initialize target and start-up positions
+  updateTargetFraction()
+  currentFraction = targetFraction
+  scrollFraction.value = currentFraction
+
+  if (!isMobile.value) {
+    // Snap videos to starting position immediately on desktop
+    videos.forEach(video => {
+      if (video) {
+        const dur = getDuration(video)
+        video.currentTime = dur * currentFraction
+      }
+    })
+  }
 
   // Set entrance animation state
   setTimeout(() => {
@@ -265,11 +415,11 @@ onMounted(() => {
   }, 150)
 
   window.addEventListener('scroll', handleScroll, { passive: true })
-  window.addEventListener('resize', handleScroll, { passive: true })
+  window.addEventListener('resize', handleResize, { passive: true })
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
-  window.removeEventListener('resize', handleScroll)
+  window.removeEventListener('resize', handleResize)
 })
 </script>
